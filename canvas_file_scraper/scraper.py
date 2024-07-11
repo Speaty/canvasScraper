@@ -37,10 +37,10 @@ def get_media_objects(self, *args, **kwargs):
 
 class CanvasScraper:
     def __init__(
-            self, base_url, api_key, path, overwrite,
+            self, base_url, api_key, course, path, overwrite,
             videos, markdown, logger=None):
         self.api_key = api_key
-        self.base_url = self._create_base_url(base_url)
+        self.base_url = self._create_base_url(f'{base_url}/courses/{course}/modules')
         self.headers = {'Authorization': f'Bearer {self.api_key}'}
         self._path = path
         self.overwrite = overwrite

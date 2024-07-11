@@ -30,8 +30,11 @@ def main():
         'canvas_api_key', metavar='key', type=str,
         help='Canvas API Key obtained from "settings"')
     parser.add_argument(
-        '-u', '--canvas_url', type=str, default='canvas.ubc.ca',
-        help='Canvas base URL (default: canvas.ubc.ca)')
+        '-u', '--canvas_url', type=str, default='canvas.sussex.ac.uk',
+        help='Canvas base URL (default: canvas.sussex.ac.uk)')
+    parser.add_argument(
+        '-c', '--course', type=str, required=True, 
+        help='Course ID to scrape')
     parser.add_argument(
         '-v', '--video', action='store_true',
         help='Enable kaltura video downloads (Warning: spacetime intensive)')
@@ -49,6 +52,7 @@ def main():
     scraper = CanvasScraper(
         args.canvas_url,
         args.canvas_api_key,
+        args.course,
         args.directory,
         args.overwrite,
         args.video,
